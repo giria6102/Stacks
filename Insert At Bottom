@@ -1,0 +1,19 @@
+void solve(stack<int>& myStack,int x){
+     if(myStack.empty()){  // if stack is empty than put the x element and return
+         myStack.push(x);
+         return;
+     }
+     
+     int top=myStack.top();  // otherwise store the top element 
+     
+     myStack.pop();   // pop the top element 
+     
+     solve(myStack,x);  // recursive call
+     
+     myStack.push(top);  // put the elements int the stack
+ }
+stack<int> pushAtBottom(stack<int>& myStack, int x) 
+{
+    solve(myStack,x);
+    return myStack;
+}
