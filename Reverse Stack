@@ -1,0 +1,26 @@
+void insertAtbottom(stack<int> &stack,int num){
+  if(stack.empty()){
+    stack.push(num);
+    return;
+  }
+   int top=stack.top();
+   stack.pop();
+   insertAtbottom(stack,num);
+   stack.push(top);
+}
+
+void reverseStack(stack<int> &stack) {
+  //base case
+  if(stack.empty()){
+    return;
+  }
+  int num=stack.top();  // storing the top element
+  stack.pop();
+  
+  reverseStack(stack);  // reversing the remaining element 
+  
+  insertAtbottom(stack,num);
+ 
+
+  
+}
