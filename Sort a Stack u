@@ -1,0 +1,29 @@
+void insertinsortedway(stack<int> &stack,int num){
+	if(stack.empty()||(!stack.empty()&&stack.top()<num)){
+		stack.push(num);
+		return;
+	}
+	int top=stack.top();
+	
+	stack.pop();
+	
+	insertinsortedway(stack,num);//recursive call
+	
+	stack.push(top);
+	
+}
+void sortStack(stack<int> &stack)
+{
+	//Base case
+	if(stack.empty()){
+		return;
+	}
+	
+	int num=stack.top();
+	stack.pop();
+
+	//recursive call
+	sortStack(stack);
+	
+	insertinsortedway(stack,num);
+}
