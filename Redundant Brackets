@@ -1,0 +1,29 @@
+bool findRedundantBrackets(string &s)
+{
+    stack<char>str;
+    
+    for(int i=0;i<s.length();i++){
+        char ch=s[i];
+        
+        if(ch=='('||ch=='+'||ch=='-'||ch=='*'||ch=='/'){
+            str.push(ch);
+        }
+        else{
+            bool isredundant=true;
+            if(ch==')'){
+                while(str.top()!='('){
+                    char top=str.top();
+                    if(top=='+'||top=='-'||top=='*'||top=='/'){
+                        isredundant=false;
+                    }
+                    str.pop();
+                }
+                if(isredundant==true){
+                    return true;
+                }
+                str.pop();
+            }
+        }
+    }
+    return false;
+}
